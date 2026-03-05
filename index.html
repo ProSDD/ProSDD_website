@@ -240,7 +240,7 @@
   <p class="subtitle">Submitted to Interspeech 2026</p>
   <nav>
     <a href="#abstract">Abstract</a>
-    <a href="https://prosdd.github.io/ProSDD_website/" class="github" target="_blank">Code &amp; Models ↗</a>
+    <a href="https://github.com/ProSDD/codes" class="github" target="_blank">Code &amp; Models ↗</a>
     <a href="#code-contents">Code Contents</a>
     <a href="#results">Results &amp; Analysis</a>
   </nav>
@@ -255,10 +255,8 @@
       Speech deepfake detection (SDD) systems perform well on standard benchmark datasets but often fail to generalize to expressive and emotional spoofing attacks. Many methods rely on spoof-heavy training data, learning dataset-specific artifacts rather than transferable cues of natural speech. In contrast, humans internalize variability in real speech and detect fakes as deviations from it. We introduce <strong>ProSDD</strong>, a two-stage framework that enriches model embeddings through supervised masked prediction of speaker-conditioned prosodic variation based on pitch, voice activity, and energy. Stage I learns prosodic variability from real speech, and Stage II jointly optimizes this objective with spoof classification. ProSDD consistently outperforms baselines under both ASVspoof 2019 and 2024 training, reducing ASVspoof 2024 EER from 25.43% to <strong>16.14%</strong> (2019-trained) and from 39.62% to <strong>7.38%</strong> (2024-trained), while achieving <strong>50% relative reductions</strong> on EmoFake and EmoSpoof-TTS.
     </div>
 
-    <div class="diagram-placeholder">
-      <strong>Architecture Diagram</strong>
-      Two-stage training framework: Stage I learns speaker-conditioned prosodic representations from real speech; Stage II jointly optimizes spoof classification with supervised masked prediction.<br/><br/>
-      <em>Replace with Figure 1: &lt;img src="figure1.png" style="width:100%; border-radius:10px;" /&gt;</em>
+    <div style="margin-top:24px; border-radius:12px; overflow:hidden; border:1.5px solid var(--border);">
+      <img src="https://github.com/ProSDD/ProSDD_website/blob/main/Full_image.pdf" style="width:100%; display:block;" />
     </div>
     <p class="diagram-caption">Figure 1: Two-stage training framework of ProSDD.</p>
 
@@ -267,7 +265,7 @@
   <!-- CODE CONTENTS -->
   <section id="code-contents">
     <h2>Code Contents</h2>
-    <p>The public repository at <a href="https://prosdd.github.io/ProSDD_website/" style="color:var(--accent);" target="_blank">prosdd.github.io/ProSDD_website</a> contains everything needed to reproduce our results and run ProSDD on new data.</p>
+    <p>The public repository at <a href="https://github.com/ProSDD/codes" style="color:var(--accent);" target="_blank">github.com/ProSDD/codes</a> contains everything needed to reproduce our results and run ProSDD on new data.</p>
 
     <div class="release-grid">
       <div class="release-card">
@@ -306,10 +304,10 @@
           <tr>
             <th>Model</th>
             <th><a href="https://datashare.ed.ac.uk/handle/10283/3336" target="_blank" class="dataset-link">ASV 2019</a></th>
-            <th><a href="https://datashare.ed.ac.uk/handle/10283/3336" target="_blank" class="dataset-link">ASV 2021</a></th>
-            <th><a href="https://www.asvspoof.org/asvspoof2024" target="_blank" class="dataset-link">ASV 2024</a></th>
-            <th><a href="https://github.com/ZhaoYi1222/EmoFake" target="_blank" class="dataset-link">EmoFake</a></th>
-            <th><a href="https://github.com/Anmol2059/EmoSpoof" target="_blank" class="dataset-link">EmoSpoof</a></th>
+            <th><a href="https://zenodo.org/record/4837263" target="_blank" class="dataset-link">ASV 2021</a></th>
+            <th><a href="https://zenodo.org/records/14498691" target="_blank" class="dataset-link">ASV 2024</a></th>
+            <th><a href="https://zenodo.org/records/10443769" target="_blank" class="dataset-link">EmoFake</a></th>
+            <th><a href="https://zenodo.org/records/15557842" target="_blank" class="dataset-link">EmoSpoof</a></th>
           </tr>
         </thead>
         <tbody>
@@ -328,10 +326,10 @@
           <tr>
             <th>Model</th>
             <th><a href="https://datashare.ed.ac.uk/handle/10283/3336" target="_blank" class="dataset-link">ASV 2019</a></th>
-            <th><a href="https://datashare.ed.ac.uk/handle/10283/3336" target="_blank" class="dataset-link">ASV 2021</a></th>
-            <th><a href="https://www.asvspoof.org/asvspoof2024" target="_blank" class="dataset-link">ASV 2024</a></th>
-            <th><a href="https://github.com/ZhaoYi1222/EmoFake" target="_blank" class="dataset-link">EmoFake</a></th>
-            <th><a href="https://github.com/Anmol2059/EmoSpoof" target="_blank" class="dataset-link">EmoSpoof</a></th>
+            <th><a href="https://zenodo.org/record/4837263" target="_blank" class="dataset-link">ASV 2021</a></th>
+            <th><a href="https://zenodo.org/records/14498691" target="_blank" class="dataset-link">ASV 2024</a></th>
+            <th><a href="https://zenodo.org/records/10443769" target="_blank" class="dataset-link">EmoFake</a></th>
+            <th><a href="https://zenodo.org/records/15557842" target="_blank" class="dataset-link">EmoSpoof</a></th>
           </tr>
         </thead>
         <tbody>
@@ -351,10 +349,10 @@
           <tr>
             <th>Model</th>
             <th><a href="https://datashare.ed.ac.uk/handle/10283/3336" target="_blank" class="dataset-link">ASV 2019</a></th>
-            <th><a href="https://datashare.ed.ac.uk/handle/10283/3336" target="_blank" class="dataset-link">ASV 2021</a></th>
-            <th><a href="https://www.asvspoof.org/asvspoof2024" target="_blank" class="dataset-link">ASV 2024</a></th>
-            <th><a href="https://github.com/ZhaoYi1222/EmoFake" target="_blank" class="dataset-link">EmoFake</a></th>
-            <th><a href="https://github.com/Anmol2059/EmoSpoof" target="_blank" class="dataset-link">EmoSpoof</a></th>
+            <th><a href="https://zenodo.org/record/4837263" target="_blank" class="dataset-link">ASV 2021</a></th>
+            <th><a href="https://zenodo.org/records/14498691" target="_blank" class="dataset-link">ASV 2024</a></th>
+            <th><a href="https://zenodo.org/records/10443769" target="_blank" class="dataset-link">EmoFake</a></th>
+            <th><a href="https://zenodo.org/records/15557842" target="_blank" class="dataset-link">EmoSpoof</a></th>
           </tr>
         </thead>
         <tbody>
