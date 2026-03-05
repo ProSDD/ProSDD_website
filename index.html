@@ -265,26 +265,6 @@
     </div>
     <p class="diagram-caption">Figure 1: Two-stage training framework of ProSDD.</p>
 
-    <div class="stage-grid" style="margin-top:28px;">
-      <div class="stage-card">
-        <h3>Stage I — Prosody Learning</h3>
-        <ul>
-          <li>Fine-tunes XLS-R on <em>real speech only</em></li>
-          <li>Supervised masked prediction objective</li>
-          <li>Speaker-conditioned targets: pitch (F0), voice activity, energy</li>
-          <li>InfoNCE loss with intra- and inter-speaker negatives</li>
-        </ul>
-      </div>
-      <div class="stage-card">
-        <h3>Stage II — Spoof Classification</h3>
-        <ul>
-          <li>Backbone initialized from Stage I</li>
-          <li>Two-pass training: masked + unmasked</li>
-          <li>Joint loss: classification + prosodic auxiliary</li>
-          <li>Lightweight classifier head (no attention pooling)</li>
-        </ul>
-      </div>
-    </div>
   </section>
 
   <!-- CODE CONTENTS -->
