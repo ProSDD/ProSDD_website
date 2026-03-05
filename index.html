@@ -3,68 +3,344 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Model</title>
+  <title>ProSDD</title>
+
   <style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; line-height: 1.6; }
-    header { margin-bottom: 24px; }
-    h1 { margin-bottom: 6px; }
-    .tag { display: inline-block; padding: 4px 10px; border: 1px solid #ddd; border-radius: 999px; font-size: 14px; }
-    section { margin: 28px 0; }
-    code, pre { background: #f6f8fa; padding: 2px 6px; border-radius: 6px; }
-    pre { padding: 12px; overflow-x: auto; }
-    footer { margin-top: 40px; font-size: 14px; color: #555; }
+    :root{
+      --bg: #ffe6f0;        /* light baby pink */
+      --header: #f7bfd6;    /* slightly darker pink */
+      --card: #fff7fb;      /* very light pink/white */
+      --ink: #2b1b22;
+      --muted: #5a3a46;
+      --border: rgba(43,27,34,.15);
+      --shadow: 0 10px 30px rgba(43,27,34,.10);
+      --shadow2: 0 6px 18px rgba(43,27,34,.08);
+      --radius: 18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px 16px 64px;
+    }
+
+    header{
+      background: var(--header);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 20px 18px;
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+    }
+
+    h1{
+      margin: 0 0 6px;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: .2px;
+    }
+
+    .subtitle{
+      margin: 0;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .nav{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .nav a{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 999px;
+      box-shadow: var(--shadow2);
+      font-size: 14px;
+      transition: transform .12s ease, background .12s ease;
+      white-space: nowrap;
+    }
+
+    .nav a:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.75);
+    }
+
+    main{
+      margin-top: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    section{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 18px 18px 16px;
+    }
+
+    section h2{
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .note{
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .figure{
+      margin-top: 12px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+    }
+
+    .figure img{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .grid-2{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 860px){
+      .grid-2{ grid-template-columns: 1fr 1fr; }
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+
+    th, td{
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    th{
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .2px;
+      background: rgba(255,255,255,.7);
+    }
+
+    tr:last-child td{ border-bottom: none; }
+
+    .pill{
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    code{
+      background: rgba(255,255,255,.6);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Your Model Name</h1>
-    <div class="tag">Task: Anti-spoofing / Deepfake Detection</div>
-    <p>Short description of what your model does and why it matters.</p>
-  </header>
+  <div class="wrap">
 
-  <section>
-    <h2>Overview</h2>
-    <p>Explain the problem, your approach, and what makes it different.</p>
-  </section>
+    <header>
+      <h1>ProSDD: Learning Prosodic Representations for Speech Deepfake Detection against Expressive and Emotional Attacks</h1>
+      <p class="subtitle">Submitted to Interspeech 2026</p>
 
-  <section>
-    <h2>Method</h2>
-    <ul>
-      <li>Architecture: ...</li>
-      <li>Training data: ...</li>
-      <li>Key idea: ...</li>
-    </ul>
-  </section>
+      <nav class="nav" aria-label="Quick links">
+        <a href="#abstract">Abstract</a>
+        <a href="https://github.com/YOUR_GITHUB/PROSDD" target="_blank" rel="noopener">Code and models ↗</a>
+        <a href="#code">Contents of code</a>
+        <a href="#datasets">Datasets used</a>
+        <a href="#results">Results and analysis</a>
+      </nav>
+    </header>
 
-  <section>
-    <h2>Results</h2>
-    <p>Add metrics, tables, and comparisons.</p>
-    <pre>
-Example:
-EER: 1.23%
-t-DCF: 0.045
-    </pre>
-  </section>
+    <main>
+      <!-- ABSTRACT -->
+      <section id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          Speech deepfake detection (SDD) systems perform well on standard benchmark datasets but often fail to generalize
+          to expressive and emotional spoofing attacks. Many methods rely on spoof-heavy training data, learning
+          dataset-specific artifacts rather than transferable cues of natural speech. In contrast, humans internalize
+          variability in real speech and detect fakes as deviations from it. We introduce ProSDD, a two-stage framework
+          that enriches model embeddings through supervised masked prediction of speaker-conditioned prosodic variation
+          based on pitch, voice activity, and energy. Stage I learns prosodic variability from real speech, and Stage II
+          jointly optimizes this objective with spoof classification. ProSDD consistently outperforms baselines under both
+          ASVspoof 2019 and 2024 training, reducing ASVspoof 2024 EER from 25.43% to 16.14% (2019-trained) and from 39.62%
+          to 7.38% (2024-trained), while achieving 50% relative reductions on EmoFake and EmoSpoof-TTS.
+        </p>
 
-  <section>
-    <h2>How to Use</h2>
-    <pre>
-pip install your-package
-python run_inference.py --input audio.wav
-    </pre>
-  </section>
+        <div class="figure">
+          <img src="assets/figure1.png" alt="ProSDD two-stage training framework (Figure 1)" />
+          <div class="note">
+            Figure: Two-stage training framework of ProSDD (Stage I: real-only prosody learning, Stage II: spoof classification + prosody auxiliary).
+          </div>
+        </div>
 
-  <section>
-    <h2>Links</h2>
-    <ul>
-      <li><a href="#">Paper</a></li>
-      <li><a href="#">Code</a></li>
-      <li><a href="#">Dataset</a></li>
-    </ul>
-  </section>
+        <div class="note">
+          Tip: Put the image at <code>assets/figure1.png</code>. (You can rename the downloaded image to <code>figure1.png</code>.)
+        </div>
+      </section>
 
-  <footer>
-    <p>Contact: your-email or your GitHub profile link</p>
-  </footer>
+      <!-- CODE CONTENTS -->
+      <section id="code">
+        <h2>Contents of code <span class="pill">GitHub repo guide</span></h2>
+        <p>
+          This section explains what to expect in the GitHub repository and what we release.
+          Update the bullets below to match your final repo structure.
+        </p>
+
+        <div class="grid-2">
+          <div>
+            <h3 style="margin:0 0 6px; font-size:16px;">What’s included</h3>
+            <ul style="margin:0; padding-left: 18px;">
+              <li>Training code for <b>Stage I</b> (real-only prosody-driven representation learning).</li>
+              <li>Training code for <b>Stage II</b> (spoof classification with prosody auxiliary supervision).</li>
+              <li>Evaluation scripts for ASVspoof 2019/2021/2024 and emotional benchmarks (EmoFake, EmoSpoof-TTS).</li>
+              <li>Config files + reproducible command lines.</li>
+              <li>Pretrained checkpoints (if you plan to release them).</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="margin:0 0 6px; font-size:16px;">Expected repo layout (example)</h3>
+            <ul style="margin:0; padding-left: 18px;">
+              <li><code>stage1_pretrain/</code> — real-only prosody masked prediction</li>
+              <li><code>stage2_finetune/</code> — spoof training (two-pass strategy)</li>
+              <li><code>data_prep/</code> — dataset manifests, feature extraction</li>
+              <li><code>configs/</code> — YAML/JSON configs</li>
+              <li><code>scripts/</code> — run + eval scripts</li>
+              <li><code>checkpoints/</code> — (optional) released weights</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="note">
+          Replace the GitHub link in the top navigation: <code>https://github.com/YOUR_GITHUB/PROSDD</code>
+        </p>
+      </section>
+
+      <!-- DATASETS -->
+      <section id="datasets">
+        <h2>Datasets used</h2>
+        <ul style="margin:0; padding-left: 18px;">
+          <li><b>Stage I (real only):</b> LibriSpeech train-clean-100 + dev (bona fide only).</li>
+          <li><b>Stage II training:</b> ASVspoof 2019 LA train/dev and ASVspoof 2024 train/dev.</li>
+          <li><b>Traditional benchmarks:</b> ASVspoof 2019 LA and ASVspoof 2021 LA eval.</li>
+          <li><b>Emotional/expressive evaluation:</b> EmoFake, EmoSpoof-TTS, and ASVspoof 2024 Track 1 eval.</li>
+        </ul>
+      </section>
+
+      <!-- RESULTS -->
+      <section id="results">
+        <h2>Results and analysis</h2>
+        <p>
+          Main takeaway: ProSDD improves robustness to emotional/expressive attacks while staying strong on traditional benchmarks.
+          Below is a compact view of the key EER numbers reported in the paper.
+        </p>
+
+        <h3 style="margin: 10px 0 6px; font-size:16px;">EER (%) on benchmarks</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Training</th>
+              <th>Model</th>
+              <th>ASV19</th>
+              <th>ASV21</th>
+              <th>ASV24</th>
+              <th>EmoFake</th>
+              <th>EmoSpoof-TTS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ASVspoof 2019 LA</td>
+              <td>ProSDD</td>
+              <td>0.42</td>
+              <td>3.87</td>
+              <td>16.14</td>
+              <td>3.70</td>
+              <td>9.54</td>
+            </tr>
+            <tr>
+              <td>ASVspoof 2024</td>
+              <td>ProSDD</td>
+              <td>19.04</td>
+              <td>18.08</td>
+              <td>7.38</td>
+              <td>25.06</td>
+              <td>11.96</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin: 14px 0 6px; font-size:16px;">Why it helps (short explanation)</h3>
+        <ul style="margin:0; padding-left: 18px;">
+          <li><b>Stage I:</b> learns natural prosodic variability from real speech (before seeing spoofs).</li>
+          <li><b>Stage II:</b> keeps prosody masked prediction as an auxiliary loss while training the spoof classifier.</li>
+          <li>This encourages the backbone to represent speaker-conditioned prosody, which seems to transfer better under expressive/emotional shifts.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Contact: <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">your GitHub</a>
+        &nbsp;•&nbsp; Paper website built for ProSDD
+      </p>
+    </footer>
+
+  </div>
 </body>
 </html>
